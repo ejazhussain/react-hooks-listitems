@@ -55,20 +55,20 @@ const ListItems: React.FC<IListItemsProps> = (props) => {
         <>
             <TableContainer component={Paper}>
                 <Table className={classes.table} aria-label="simple table">
-                    <TableHead style={{backgroundColor:'#eaeaea'}}>
+                    <TableHead style={{ backgroundColor: '#eaeaea' }}>
                         <TableRow>
+                            <TableCell className={classes.headerCell} align="center"></TableCell>                            
                             <TableCell className={classes.headerCell} align="left">First Name</TableCell>
                             <TableCell className={classes.headerCell} align="left">Last Name</TableCell>
                             <TableCell className={classes.headerCell} align="left">Email</TableCell>
                             <TableCell className={classes.headerCell} align="left">Company</TableCell>
                             <TableCell className={classes.headerCell} align="left">Country</TableCell>
-                            <TableCell className={classes.headerCell} align="center"></TableCell>
-                            <TableCell className={classes.headerCell} align="center"></TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {state.listItems.length > 0 && state.listItems.map((row) => (
                             <TableRow key={row.Title}>
+                                <TableCell style={{ cursor: 'pointer' }} onClick={() => onClickEditItem(row)} align="center">{<EditIcon />}</TableCell>
                                 <TableCell component="th" scope="row">
                                     {row.Title}
                                 </TableCell>
@@ -76,7 +76,6 @@ const ListItems: React.FC<IListItemsProps> = (props) => {
                                 <TableCell align="left">{row.Email}</TableCell>
                                 <TableCell align="left">{row.Company}</TableCell>
                                 <TableCell align="left">{row.Country}</TableCell>
-                                <TableCell style={{ cursor: 'pointer' }} onClick={() => onClickEditItem(row)} align="center">{<EditIcon />}</TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
